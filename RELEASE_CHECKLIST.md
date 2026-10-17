@@ -16,7 +16,7 @@ This repository is a landing page for **both** unofficial RocksDict 0.3.29 free-
 
 - [x] Inspect **all four wheels across both releases**, including `*.dist-info` license metadata — see [2026-10-17 wheel audit](WHEEL_AUDIT_2026-10-17.md). Only MIT is embedded; the notice gap needs remediation.
 - [ ] Inventory all incorporated native libraries and review corresponding third-party license text/NOTICE requirements; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-- [ ] **Packaging fix required:** include applicable native third-party license/NOTICE texts within each wheel (not just in this documentation repo), update license metadata, and check with PEP 639-compatible tooling.
+- [x] Added RocksDB, LevelDB and five compression-library notices inside each repacked wheel with verified `License-File` fields. The **separate broader Rust crate/native license inventory remains open**, so do not claim complete legal compliance.
 - [ ] Retain upstream copyrights and identify independent modifications clearly.
 - [x] Compare SHA-256 of all four uploaded wheel files to the GitHub Release asset `digest` values — exact matches; see [wheel audit](WHEEL_AUDIT_2026-10-17.md). Linked CI runs are recorded separately by release.
 - [ ] For **new/repacked** wheels, re-run install/import/version/GIL checks with actual free-threaded Python 3.14 on each supported platform. Original release CI passed, but no new wheel has been built yet.
@@ -25,9 +25,9 @@ This repository is a landing page for **both** unofficial RocksDict 0.3.29 free-
 
 - [x] Created [manual GitHub Actions workflow](https://github.com/raled573343/RocksDict/actions/workflows/append-wheel-licenses.yml) and [wheel repacker](https://github.com/raled573343/RocksDict/blob/main/tools/repack_cp314t_licenses.py) in the **source** repository. It caches originals, verifies SHA-256 for all four wheels, adds the exact RocksDB Apache-2.0/LevelDB notices, rebuilds RECORD, verifies native extensions are byte-identical, and uploads new wheels with SHA256SUMS as a **preview**.
 - [x] Ran initial manual action on **2026-10-17**: [successful run #39062998421](https://github.com/raled573343/RocksDict/actions/runs/39062998421), [artifact #12111473654](https://github.com/raled573343/RocksDict/actions/runs/39062998421/artifacts/12111473654), and [independent verification](WHEEL_PREVIEW_VERIFICATION_2026-10-17.md): four wheel hashes/RECORD valid, native code identical; Linux no-GIL import passed.
-- [ ] **Prepared after the successful run:** the updated manual action includes Snappy, LZ4, Zstd, zlib, bzip2 notices and revised package METADATA, but **has NOT yet been run**. Execute [the updated workflow](https://github.com/raled573343/RocksDict/actions/workflows/append-wheel-licenses.yml) once, then independently verify the resulting preview before promoting to releases.
+- [x] The revised [manual Action #39063972719](https://github.com/raled573343/RocksDict/actions/runs/39063972719) succeeded and the [final preview artifact #12112730954](https://github.com/raled573343/RocksDict/actions/runs/39063972719/artifacts/12112730954) passed independent integrity, original native-binary equality, full RECORD, revised METADATA, and license file validation — see [verification report](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md).
 - [ ] Inventory and package **remaining third-party native notices** before claiming the new wheels are fully license-compliant or promoting the preview to release assets.
-- [ ] Verify correction of outdated PyPI/OS/Python claims in newly repacked wheel METADATA; this correction is implemented in the script but **not verified by a new run**.
+- [x] Corrected and independently verified cp314t-specific wheel METADATA/embedded README.
 
 ## If moving the actual release assets to this repository later
 

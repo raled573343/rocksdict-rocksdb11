@@ -14,18 +14,18 @@ This repository is a landing page for **both** unofficial RocksDict 0.3.29 free-
 
 ## Verify the wheel files and legal notices
 
-- [ ] Inspect **all four wheels across both releases**, especially wheel `*.dist-info` license metadata.
+- [x] Inspect **all four wheels across both releases**, including `*.dist-info` license metadata — see [2026-10-17 wheel audit](WHEEL_AUDIT_2026-10-17.md). Only MIT is embedded; the notice gap needs remediation.
 - [ ] Inventory all incorporated native libraries and review corresponding third-party license text/NOTICE requirements; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
-- [ ] Provide redistributable license/attribution notices with the binaries and fix packaging if required.
+- [ ] **Packaging fix required:** include applicable native third-party license/NOTICE texts within each wheel (not just in this documentation repo), update license metadata, and check with PEP 639-compatible tooling.
 - [ ] Retain upstream copyrights and identify independent modifications clearly.
-- [ ] Confirm checksums and CI link correspond to the published artifacts, not a later branch head.
-- [ ] Run install/import/version/GIL checks with actual free-threaded Python 3.14 on each supported platform.
+- [x] Compare SHA-256 of all four uploaded wheel files to the GitHub Release asset `digest` values — exact matches; see [wheel audit](WHEEL_AUDIT_2026-10-17.md). Linked CI runs are recorded separately by release.
+- [ ] For **new/repacked** wheels, re-run install/import/version/GIL checks with actual free-threaded Python 3.14 on each supported platform. Original release CI passed, but no new wheel has been built yet.
 
 ## If moving the actual release assets to this repository later
 
 Currently the **canonical release stays in** [raled573343/RocksDict](https://github.com/raled573343/RocksDict/releases). Do not create an empty or misleading release entry here.
 
-1. Complete the binary license/attribution audit above.
+1. Complete the **remaining native dependency/license inventory and packaging remediation** described in [the verified wheel audit](WHEEL_AUDIT_2026-10-17.md). Do not treat the original MIT-only wheel license payload as final.
 2. Download the two wheels and matching `SHA256SUMS` from **each** verified release, without rebuilding or renaming them. Do not mix checksum manifests.
 3. Publish **separate** matching release tags with the corresponding two wheels and SHA256SUMS, using [RELEASE_NOTES.md](RELEASE_NOTES.md) as the description and explicitly stating that the compiled source is in the other repository: standard release commit `1ae571fc5b107fc7f22b470fbded1e92ed3e4899` or RocksDB 11 commit `b2958391ddea0530e0f299295f7b5fad43590a3a`, respectively. Any auto-generated source archive for a documentation-only tag here is **not** the wheel source tree.
 4. Compare published SHA-256 values byte-for-byte with the original release; do not silently repackage wheels.

@@ -150,8 +150,9 @@ All names are used to identify compatible software; this independent distributio
 - **[Download RocksDict 0.3.29 + RocksDB 11.8.1 for Python 3.14t](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29-rocksdb11.8.1)**
 - [Browse standard build source](https://github.com/raled573343/RocksDict/tree/1ae571fc5b107fc7f22b470fbded1e92ed3e4899)
 - [Browse RocksDB 11 build source](https://github.com/raled573343/RocksDict/tree/b2958391ddea0530e0f299295f7b5fad43590a3a)
+- [Report packaging / license gaps and follow remediation](https://github.com/raled573343/rocksdict-rocksdb11/issues/1)
 - [Source-code repository and CI](https://github.com/raled573343/RocksDict) (Issues are currently disabled there)
 - [Original RocksDict project](https://github.com/rocksdict/RocksDict)
 - [Release notes](RELEASE_NOTES.md), [wheel content audit](WHEEL_AUDIT_2026-10-17.md) and [release / legal publication checklist](RELEASE_CHECKLIST.md)
 
-For problems with **this unofficial build**, use the independent project's support channel when enabled; please do not direct fork-specific issues to the original RocksDict maintainers. The source fork currently has GitHub Issues disabled.
+For packaging/license concerns about **these unofficial wheels**, use [this project's remediation issue](https://github.com/raled573343/rocksdict-rocksdb11/issues/1), not the original RocksDict project. The source-code fork currently has GitHub Issues disabled.

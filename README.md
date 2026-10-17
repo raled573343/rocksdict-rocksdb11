@@ -29,8 +29,8 @@ This repository hosts the **landing page, documentation, audit notes and benchma
 | Component | Standard Python 3.14t build | RocksDB 11 build |
 | --- | --- | --- |
 | Python distribution | `rocksdict 0.3.29` | `rocksdict 0.3.29+rocksdb11.8.1` |
-| Native engine | Original RocksDict 0.3.29 dependency stack | **RocksDB 11.8.1** |
-| Rust binding | Original RocksDict 0.3.29 dependency stack | `rust-rocksdb 0.53.0` |
+| Native engine | **RocksDB 9.8.4** (pinned in the standard release source) | **RocksDB 11.8.1** |
+| Rust binding | `rocksdb 0.24.0` / `librocksdb-sys 0.17.1+9.8.4` | `rust-rocksdb 0.53.0` / `rust-librocksdb-sys 0.48.1+11.8.1` |
 | Python | **Free-threaded CPython 3.14t**, 64-bit | **Free-threaded CPython 3.14t**, 64-bit |
 | Windows | `cp314-cp314t-win_amd64` | `cp314-cp314t-win_amd64` |
 | Linux | `cp314-cp314t-manylinux_2_28_x86_64` (glibc 2.28+) | Same |
@@ -99,10 +99,10 @@ Other extension modules imported into your application can change the process GI
 ```python
 from rocksdict import Options, Rdict
 
-db = Rdict("./rocksdb11_example", Options(raw_mode=True))
+db = Rdict("./rocksdict_example", Options(raw_mode=True))
 try:
-    db[b"hello"] = b"RocksDB 11"
-    assert db[b"hello"] == b"RocksDB 11"
+    db[b"hello"] = b"RocksDict"
+    assert db[b"hello"] == b"RocksDict"
     for key, value in db.items():
         print(key, value)
 finally:
@@ -111,10 +111,10 @@ finally:
 
 ### Selected capabilities of the RocksDB 11 variant
 
-The **RocksDB 11 release only** adds:
+The **RocksDB 11 release** upgrades the native engine and exposes selected newer features:
 
-- RocksDB 11.8.1 through a pinned native Rust dependency.
-- A Python 3.14t wheel ABI that passes a runtime GIL-disabled check.
+- RocksDB 11.8.1 through pinned native Rust dependencies.
+- Like the standard wheel, it targets Python 3.14t and passes a runtime GIL-disabled check.
 - Wide-column entity operations (including `put_entity` / `get_entity`) and wide-column write-batch integration.
 - Selected RocksDB 11 read-executor, SST ingestion and file-checksum controls.
 

@@ -1,4 +1,17 @@
-# Release notes — RocksDict 0.3.29 + RocksDB 11.8.1
+# Release notes — RocksDict 0.3.29 for free-threaded Python 3.14t
+
+Two separate, independently published builds are available. **Choose either standard RocksDict or the upgraded native RocksDB 11 version.**
+
+## Release A: standard RocksDict 0.3.29 — CPython 3.14t
+
+**[Download standard RocksDict 0.3.29 wheels and SHA256SUMS](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29)**
+
+- Built from the upstream RocksDict 0.3.29 code for free-threaded CPython 3.14 (`cp314t`), Windows x64 and Linux x86-64 (glibc 2.28+).
+- [Upstream 0.3.29 release](https://github.com/rocksdict/RocksDict/releases/tag/v0.3.29) · [Fork source commit `1ae571f`](https://github.com/raled573343/RocksDict/commit/1ae571fc5b107fc7f22b470fbded1e92ed3e4899) · [CI run #39024425551](https://github.com/raled573343/RocksDict/actions/runs/39024425551)
+- Assets: `rocksdict-0.3.29-cp314-cp314t-win_amd64.whl`, `rocksdict-0.3.29-cp314-cp314t-manylinux_2_28_x86_64.whl`, `SHA256SUMS`.
+- Built and tested for free-threaded CPython; **no RocksDB 11 upgrade is claimed for this release**.
+
+## Release B: RocksDict 0.3.29 + RocksDB 11.8.1
 
 **Unofficial free-threaded Python 3.14t wheels for Windows x64 and Linux x86-64.**
 

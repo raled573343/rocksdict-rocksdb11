@@ -140,7 +140,7 @@ This project builds on the work of others and clearly distinguishes their contri
 | [RocksDB](https://github.com/facebook/rocksdb) — Meta and contributors | Native database engine | Dual GPLv2 / Apache-2.0; **Apache-2.0 option** used for this distribution |
 | [rust-rocksdb](https://github.com/zaidoon1/rust-rocksdb) and its contributors | Rust bindings/native integration | Apache-2.0, subject to individual incorporated dependencies |
 
-The upstream MIT copyright notice remains acknowledged. **[The 2026-10-17 audit of all four published wheels](WHEEL_AUDIT_2026-10-17.md) confirmed their SHA-256 digests match GitHub Releases and found that the wheels currently contain only the original MIT license file—not a full set of native third-party license texts.** See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and pending remediation. A single MIT license **does not** relicense the native engine or bundled third-party components.
+The upstream MIT copyright notice remains acknowledged. **[The 2026-10-17 audit of all four published wheels](WHEEL_AUDIT_2026-10-17.md) confirmed their SHA-256 digests match GitHub Releases and found that the wheels currently contain only the original MIT license file—not a full set of native third-party license texts.** The **[revised four-wheel preview has now passed independent verification](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md)** with native bytes unchanged, eight added notices and corrected metadata. The revised binaries are still an Action artifact, **not yet a GitHub Release**. See [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [issue #1](https://github.com/raled573343/rocksdict-rocksdb11/issues/1) for remaining legal review. A single MIT license **does not** relicense the native engine or bundled third-party components.
 
 All names are used to identify compatible software; this independent distribution is **not endorsed by** the respective rights holders.
 
@@ -153,6 +153,6 @@ All names are used to identify compatible software; this independent distributio
 - [Report packaging / license gaps and follow remediation](https://github.com/raled573343/rocksdict-rocksdb11/issues/1)
 - [Source-code repository and CI](https://github.com/raled573343/RocksDict) (Issues are currently disabled there)
 - [Original RocksDict project](https://github.com/rocksdict/RocksDict)
-- [Release notes](RELEASE_NOTES.md), [wheel content audit](WHEEL_AUDIT_2026-10-17.md) and [release / legal publication checklist](RELEASE_CHECKLIST.md)
+- [Release notes](RELEASE_NOTES.md), [verified revised wheel artifact](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md), [original wheel audit](WHEEL_AUDIT_2026-10-17.md) and [release checklist](RELEASE_CHECKLIST.md)
 
 For packaging/license concerns about **these unofficial wheels**, use [this project's remediation issue](https://github.com/raled573343/rocksdict-rocksdb11/issues/1), not the original RocksDict project. The source-code fork currently has GitHub Issues disabled.

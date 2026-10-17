@@ -21,7 +21,7 @@ The original names **RocksDict**, **RocksDB**, and **Meta** are used descriptive
 
 **[Detailed archive and SHA-256 audit (2026-10-17)](WHEEL_AUDIT_2026-10-17.md).** All four Linux/Windows wheel files from **both** published releases were inspected and verified against their GitHub Release SHA-256 digests. The ZIP and wheel `RECORD` checks passed, and the original MIT license was included in each.
 
-**Verified gap:** none of the four wheel packages contains separate Apache-2.0 / LevelDB or other native third-party license/NOTICE documents. We cannot yet claim that the binaries carry all notices required by their bundled dependencies. Also, the embedded `METADATA`/README is the original upstream description and overstates supported targets for these particular cp314t wheels.
+**Original releases:** none of the four original wheel packages contained separate Apache-2.0 / LevelDB or other native third-party license/NOTICE documents; their `METADATA`/README contained inaccurate general upstream compatibility claims. **Remediation preview:** the [revised four-wheel artifact](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md) now includes Apache-2.0, LevelDB, Snappy, LZ4, Zstd, zlib and bzip2 notices, attribution and corrected metadata. All four passed technical integrity checks. **Remaining:** native/Rust crate-specific notice review is not completed, and the revised artifact has not been promoted to GitHub Releases.
 
 Before treating **either of the two releases** as legally audited, or republishing copies in this repository, verify **for each build**:
 

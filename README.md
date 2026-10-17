@@ -140,7 +140,7 @@ This project builds on the work of others and clearly distinguishes their contri
 | [RocksDB](https://github.com/facebook/rocksdb) — Meta and contributors | Native database engine | Dual GPLv2 / Apache-2.0; **Apache-2.0 option** used for this distribution |
 | [rust-rocksdb](https://github.com/zaidoon1/rust-rocksdb) and its contributors | Rust bindings/native integration | Apache-2.0, subject to individual incorporated dependencies |
 
-The upstream MIT copyright notice remains acknowledged. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution, component-specific licenses, and the **outstanding binary-redistribution notice audit**. A single MIT license **does not** relicense the native engine or bundled third-party components.
+The upstream MIT copyright notice remains acknowledged. **[The 2026-10-17 audit of all four published wheels](WHEEL_AUDIT_2026-10-17.md) confirmed their SHA-256 digests match GitHub Releases and found that the wheels currently contain only the original MIT license file—not a full set of native third-party license texts.** See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for attribution and pending remediation. A single MIT license **does not** relicense the native engine or bundled third-party components.
 
 All names are used to identify compatible software; this independent distribution is **not endorsed by** the respective rights holders.
 
@@ -150,8 +150,8 @@ All names are used to identify compatible software; this independent distributio
 - **[Download RocksDict 0.3.29 + RocksDB 11.8.1 for Python 3.14t](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29-rocksdb11.8.1)**
 - [Browse standard build source](https://github.com/raled573343/RocksDict/tree/1ae571fc5b107fc7f22b470fbded1e92ed3e4899)
 - [Browse RocksDB 11 build source](https://github.com/raled573343/RocksDict/tree/b2958391ddea0530e0f299295f7b5fad43590a3a)
-- [Report source / wheel bugs](https://github.com/raled573343/RocksDict/issues)
+- [Source-code repository and CI](https://github.com/raled573343/RocksDict) (Issues are currently disabled there)
 - [Original RocksDict project](https://github.com/rocksdict/RocksDict)
-- [Release notes](RELEASE_NOTES.md) and [release / legal publication checklist](RELEASE_CHECKLIST.md)
+- [Release notes](RELEASE_NOTES.md), [wheel content audit](WHEEL_AUDIT_2026-10-17.md) and [release / legal publication checklist](RELEASE_CHECKLIST.md)
 
-For problems with **this unofficial build**, open an issue on the maintained fork above rather than assuming the original RocksDict team supports it.
+For problems with **this unofficial build**, use the independent project's support channel when enabled; please do not direct fork-specific issues to the original RocksDict maintainers. The source fork currently has GitHub Issues disabled.

@@ -11,12 +11,14 @@
 | **[RocksDict 0.3.29 — Python 3.14t](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29)** | An upstream-aligned RocksDict 0.3.29 build targeting the free-threaded CPython 3.14 ABI | Using the existing RocksDict implementation on Python without the GIL |
 | **[RocksDict 0.3.29 + RocksDB 11.8.1](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29-rocksdb11.8.1)** | Experimental RocksDict 0.3.29 variant with native RocksDB **11.8.1** and updated Rust bindings, targeting the same free-threaded ABI | Evaluating the RocksDB 11 engine and its exposed features |
 
-**Both release pages include Windows x64 and Linux x86-64 wheels plus SHA256SUMS.** Neither release supports conventional (GIL-enabled) CPython 3.14, macOS, or ARM64. These packages share the `rocksdict` import name: **install one variant per Python environment**, not both at once.
+**[Read the benchmarks: free-threaded Python 3.14t, RocksDict, and RocksDB 11.8.1 — in-process vs. multiprocess (English + Русский)](https://github.com/raled573343/rocksdict-rocksdb11/issues/2).** The article reports up to **5.04×** in a warm-cache, eight-thread *RocksDict GET microbenchmark* versus the same Python build with the GIL enabled; it **does not** claim a fivefold HTTP-service speedup.
+
+**Both release pages contain updated Windows x64 and Linux x86-64 wheels plus matching `SHA256SUMS`.** The release assets were repackaged on **2026-10-17** to include third-party license notices and corrected wheel metadata, with compiled native extensions unchanged ([publication run #39065343524](https://github.com/raled573343/RocksDict/actions/runs/39065343524)). Neither release supports conventional (GIL-enabled) CPython 3.14, macOS, or ARM64. These packages share the `rocksdict` import name: **install one variant per Python environment**, not both at once.
 
 - **Standard build:** [source commit `1ae571f`](https://github.com/raled573343/RocksDict/commit/1ae571fc5b107fc7f22b470fbded1e92ed3e4899) · [CI run #39024425551](https://github.com/raled573343/RocksDict/actions/runs/39024425551) · [upstream 0.3.29](https://github.com/rocksdict/RocksDict/releases/tag/v0.3.29)
 - **RocksDB 11 build:** [source commit `b295839`](https://github.com/raled573343/RocksDict/commit/b2958391ddea0530e0f299295f7b5fad43590a3a) · [CI run #39036624615](https://github.com/raled573343/RocksDict/actions/runs/39036624615)
 
-This repository is the **public-facing landing page and release documentation**. The source-code fork, build workflows, and current downloadable binaries are hosted in [raled573343/RocksDict](https://github.com/raled573343/RocksDict). **Downloads currently live in that repository, not in this repository's Releases tab.**
+This repository hosts the **landing page, documentation, audit notes and benchmark article**. The source-code fork, build workflows and downloadable wheels live in [raled573343/RocksDict](https://github.com/raled573343/RocksDict). **Use the two linked Releases in that source repository for downloads; this repository does not host the wheel assets.**
 
 ## What is this?
 
@@ -124,6 +126,8 @@ The **standard Python 3.14t release** reports successful wheel install, no-GIL s
 
 The **RocksDB 11 release** passed Windows x64 and Linux x86-64 builds and native-version, no-GIL and integration checks in [CI run #39036624615](https://github.com/raled573343/RocksDict/actions/runs/39036624615), from [`b2958391ddea0530e0f299295f7b5fad43590a3a`](https://github.com/raled573343/RocksDict/commit/b2958391ddea0530e0f299295f7b5fad43590a3a).
 
+**Current GitHub Release assets:** On **2026-10-17**, [Action #39065343524](https://github.com/raled573343/RocksDict/actions/runs/39065343524) updated **both existing release tags** with repackaged wheels and new `SHA256SUMS`. ZIP/`RECORD` integrity, metadata and notice inclusion were verified; the native `.so`/`.pyd` bytes were kept unchanged. The repack action passed Linux CPython 3.14t no-GIL import smoke for both variants. Windows-native runtime tests were performed in the original build CI, **not repeated in the repack action**. [Original release backups](https://github.com/raled573343/RocksDict/actions/runs/39065343524/artifacts/12113435505) were saved as an Actions artifact (retention-limited).
+
 - **Experimental distribution:** successful CI is not a broad production-readiness or thread-safety certification. Stress-test your exact concurrency and data-access patterns.
 - **Back up your databases first.** New RocksDB formats/features may create compatibility issues with older RocksDB releases. Do not assume an updated database can be safely downgraded.
 - **ABI-specific:** regular CPython 3.14 is not compatible with `cp314t` wheels.
@@ -140,7 +144,7 @@ This project builds on the work of others and clearly distinguishes their contri
 | [RocksDB](https://github.com/facebook/rocksdb) — Meta and contributors | Native database engine | Dual GPLv2 / Apache-2.0; **Apache-2.0 option** used for this distribution |
 | [rust-rocksdb](https://github.com/zaidoon1/rust-rocksdb) and its contributors | Rust bindings/native integration | Apache-2.0, subject to individual incorporated dependencies |
 
-The upstream MIT copyright notice remains acknowledged. **[The 2026-10-17 audit of all four published wheels](WHEEL_AUDIT_2026-10-17.md) confirmed their SHA-256 digests match GitHub Releases and found that the wheels currently contain only the original MIT license file—not a full set of native third-party license texts.** The **[revised four-wheel preview has now passed independent verification](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md)** with native bytes unchanged, eight added notices and corrected metadata. The revised binaries are still an Action artifact, **not yet a GitHub Release**. See [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [issue #1](https://github.com/raled573343/rocksdict-rocksdb11/issues/1) for remaining legal review. A single MIT license **does not** relicense the native engine or bundled third-party components.
+The original RocksDict MIT copyright notice remains intact. **Current released wheels** additionally include the RocksDB Apache-2.0 text, inherited LevelDB notices, Snappy, LZ4, Zstandard, zlib and bzip2 license texts, attribution, and updated `METADATA`/`RECORD`. The native binaries were not rebuilt for this packaging revision; [Action #39065343524](https://github.com/raled573343/RocksDict/actions/runs/39065343524) published the updated wheels into the existing Releases. The [earlier audit](WHEEL_AUDIT_2026-10-17.md) and [preview verification](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md) describe historical **pre-publication** files, not the current download state. See [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [open rights-compliance issue #1](https://github.com/raled573343/rocksdict-rocksdb11/issues/1): **a complete review of the actual bundled Rust/native dependencies is still outstanding**, so these releases must not be represented as legally certified. A root MIT license does not relicense incorporated third-party code.
 
 All names are used to identify compatible software; this independent distribution is **not endorsed by** the respective rights holders.
 
@@ -148,11 +152,12 @@ All names are used to identify compatible software; this independent distributio
 
 - **[Download standard RocksDict 0.3.29 for Python 3.14t](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29)**
 - **[Download RocksDict 0.3.29 + RocksDB 11.8.1 for Python 3.14t](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29-rocksdb11.8.1)**
+- **[Read the free-threaded Python / RocksDB performance case study (English + Русский)](https://github.com/raled573343/rocksdict-rocksdb11/issues/2)** — warm-cache GET microbenchmark versus in-process and multiprocess HTTP
 - [Browse standard build source](https://github.com/raled573343/RocksDict/tree/1ae571fc5b107fc7f22b470fbded1e92ed3e4899)
 - [Browse RocksDB 11 build source](https://github.com/raled573343/RocksDict/tree/b2958391ddea0530e0f299295f7b5fad43590a3a)
 - [Report packaging / license gaps and follow remediation](https://github.com/raled573343/rocksdict-rocksdb11/issues/1)
 - [Source-code repository and CI](https://github.com/raled573343/RocksDict) (Issues are currently disabled there)
 - [Original RocksDict project](https://github.com/rocksdict/RocksDict)
-- [Release notes](RELEASE_NOTES.md), [verified revised wheel artifact](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md), [original wheel audit](WHEEL_AUDIT_2026-10-17.md) and [release checklist](RELEASE_CHECKLIST.md)
+- [Release notes](RELEASE_NOTES.md), [2026-10-17 published-release action](https://github.com/raled573343/RocksDict/actions/runs/39065343524), [historical wheel audit](WHEEL_AUDIT_2026-10-17.md), [repack preview verification](WHEEL_REPACK_V2_VERIFICATION_2026-10-17.md) and [release checklist](RELEASE_CHECKLIST.md)
 
 For packaging/license concerns about **these unofficial wheels**, use [this project's remediation issue](https://github.com/raled573343/rocksdict-rocksdb11/issues/1), not the original RocksDict project. The source-code fork currently has GitHub Issues disabled.

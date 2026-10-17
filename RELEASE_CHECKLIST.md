@@ -24,9 +24,10 @@ This repository is a landing page for **both** unofficial RocksDict 0.3.29 free-
 ## License-patching preview Action (no Rust/C++ build)
 
 - [x] Created [manual GitHub Actions workflow](https://github.com/raled573343/RocksDict/actions/workflows/append-wheel-licenses.yml) and [wheel repacker](https://github.com/raled573343/RocksDict/blob/main/tools/repack_cp314t_licenses.py) in the **source** repository. It caches originals, verifies SHA-256 for all four wheels, adds the exact RocksDB Apache-2.0/LevelDB notices, rebuilds RECORD, verifies native extensions are byte-identical, and uploads new wheels with SHA256SUMS as a **preview**.
-- [ ] Run it manually with **Actions → Add native license notices to published cp314t wheels (no rebuild) → Run workflow**; review output/hashes and Linux free-threaded import checks.
+- [x] Ran initial manual action on **2026-10-17**: [successful run #39062998421](https://github.com/raled573343/RocksDict/actions/runs/39062998421), [artifact #12111473654](https://github.com/raled573343/RocksDict/actions/runs/39062998421/artifacts/12111473654), and [independent verification](WHEEL_PREVIEW_VERIFICATION_2026-10-17.md): four wheel hashes/RECORD valid, native code identical; Linux no-GIL import passed.
+- [ ] **Prepared after the successful run:** the updated manual action includes Snappy, LZ4, Zstd, zlib, bzip2 notices and revised package METADATA, but **has NOT yet been run**. Execute [the updated workflow](https://github.com/raled573343/RocksDict/actions/workflows/append-wheel-licenses.yml) once, then independently verify the resulting preview before promoting to releases.
 - [ ] Inventory and package **remaining third-party native notices** before claiming the new wheels are fully license-compliant or promoting the preview to release assets.
-- [ ] Improve outdated embedded PyPI/OS/Python claims in wheel METADATA/README separately. This focused Action does **not** rewrite upstream package marketing metadata.
+- [ ] Verify correction of outdated PyPI/OS/Python claims in newly repacked wheel METADATA; this correction is implemented in the script but **not verified by a new run**.
 
 ## If moving the actual release assets to this repository later
 

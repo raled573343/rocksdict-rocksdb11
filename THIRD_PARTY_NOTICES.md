@@ -1,6 +1,6 @@
 # Attribution and third-party licensing
 
-This document describes the provenance of the **unofficial** RocksDict + RocksDB 11 distribution. It does **not** replace the actual third-party license texts that must accompany redistributed components or binary packages.
+This document describes the provenance of the **two unofficial** RocksDict Python 3.14t distributions (original dependency stack and RocksDB 11 variant). It does **not** replace the actual third-party license texts that must accompany redistributed components or binary packages.
 
 ## Attribution
 
@@ -17,15 +17,20 @@ Readable copies of the RocksDB v11.8.1 license texts are retained here: [Apache 
 
 The original names **RocksDict**, **RocksDB**, and **Meta** are used descriptively to identify the upstream software. This distribution is neither official nor endorsed by their respective rights holders.
 
-## Binary redistribution audit — not yet complete
+## Four-wheel package audit — completed; third-party license review — incomplete
 
-The [already-published release](https://github.com/raled573343/RocksDict/releases/tag/cp314t-v0.3.29-rocksdb11.8.1) provides prebuilt wheels. Before treating the wheel files as legally audited, or republishing copies in this repository, verify **for each build**:
+**[Detailed archive and SHA-256 audit (2026-10-17)](WHEEL_AUDIT_2026-10-17.md).** All four Linux/Windows wheel files from **both** published releases were inspected and verified against their GitHub Release SHA-256 digests. The ZIP and wheel `RECORD` checks passed, and the original MIT license was included in each.
+
+**Verified gap:** none of the four wheel packages contains separate Apache-2.0 / LevelDB or other native third-party license/NOTICE documents. We cannot yet claim that the binaries carry all notices required by their bundled dependencies. Also, the embedded `METADATA`/README is the original upstream description and overstates supported targets for these particular cp314t wheels.
+
+Before treating **either of the two releases** as legally audited, or republishing copies in this repository, verify **for each build**:
 
 1. Inspect the wheel's `*.dist-info/licenses/`, `METADATA`, `RECORD`, and any packaged native dependency notices. Confirm the original RocksDict MIT notice is included in distribution materials.
 2. Produce a dependency / license inventory for the **pinned versions and actual linked artifacts**, including RocksDB, Rust bindings, compression libraries and any incorporated LevelDB / third-party code.
 3. Include an accessible copy of the relevant Apache-2.0 license, other required license texts, and any legally required attribution/NOTICE content **with the distributed binaries** (for example inside wheel metadata and/or in a clearly linked release license bundle, as required by each license).
 4. Preserve original copyright, patent, license and attribution notices in redistributed source. Mark modified upstream files where required by the applicable license.
 5. Review marketing and package naming for potential trademark confusion. Do not imply upstream endorsement or publish under the existing upstream PyPI project without appropriate authorization.
-6. Re-run this check for **each new release and each platform**. Hashes/CI success establish integrity and tested functionality, **not legal compliance**.
+6. Re-run this check for **each new release and each platform**, with automated wheel-content tests. Hashes/CI success establish integrity and tested functionality, **not legal compliance**.
+7. Correct the package metadata and embedded README for these unofficial ABI-specific distributions; the original upstream PyPI URL is **not** where to install these particular wheels.
 
 This is a technical attribution inventory and publication checklist, not a legal opinion. Consult qualified counsel if a formal distribution/commercial risk assessment is necessary.

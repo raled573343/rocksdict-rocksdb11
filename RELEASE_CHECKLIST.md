@@ -21,6 +21,13 @@ This repository is a landing page for **both** unofficial RocksDict 0.3.29 free-
 - [x] Compare SHA-256 of all four uploaded wheel files to the GitHub Release asset `digest` values — exact matches; see [wheel audit](WHEEL_AUDIT_2026-10-17.md). Linked CI runs are recorded separately by release.
 - [ ] For **new/repacked** wheels, re-run install/import/version/GIL checks with actual free-threaded Python 3.14 on each supported platform. Original release CI passed, but no new wheel has been built yet.
 
+## License-patching preview Action (no Rust/C++ build)
+
+- [x] Created [manual GitHub Actions workflow](https://github.com/raled573343/RocksDict/actions/workflows/append-wheel-licenses.yml) and [wheel repacker](https://github.com/raled573343/RocksDict/blob/main/tools/repack_cp314t_licenses.py) in the **source** repository. It caches originals, verifies SHA-256 for all four wheels, adds the exact RocksDB Apache-2.0/LevelDB notices, rebuilds RECORD, verifies native extensions are byte-identical, and uploads new wheels with SHA256SUMS as a **preview**.
+- [ ] Run it manually with **Actions → Add native license notices to published cp314t wheels (no rebuild) → Run workflow**; review output/hashes and Linux free-threaded import checks.
+- [ ] Inventory and package **remaining third-party native notices** before claiming the new wheels are fully license-compliant or promoting the preview to release assets.
+- [ ] Improve outdated embedded PyPI/OS/Python claims in wheel METADATA/README separately. This focused Action does **not** rewrite upstream package marketing metadata.
+
 ## If moving the actual release assets to this repository later
 
 Currently the **canonical release stays in** [raled573343/RocksDict](https://github.com/raled573343/RocksDict/releases). Do not create an empty or misleading release entry here.

@@ -13,6 +13,8 @@ This document describes the provenance of the **unofficial** RocksDict + RocksDB
 
 The root [LICENSE](LICENSE) retains the original MIT notice and covers the original documentation/modifications where applicable. It does **not** assert that the RocksDB engine, the Rust binding, third-party compression libraries, or every binary linked into a wheel are MIT-licensed.
 
+Readable copies of the RocksDB v11.8.1 license texts are retained here: [Apache License 2.0](LICENSES/Apache-2.0.txt) and [inherited LevelDB license notices](LICENSES/LevelDB.txt). They do not by themselves establish that the already-published wheel carries every required notice.
+
 The original names **RocksDict**, **RocksDB**, and **Meta** are used descriptively to identify the upstream software. This distribution is neither official nor endorsed by their respective rights holders.
 
 ## Binary redistribution audit — not yet complete
